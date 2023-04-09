@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js Intro</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body style="background: rgb(0, 58, 139);">
+    <!-- Control absoluto de este DIV. Este div es la aplicación de Vue -->
+    <div id="myApp">
+        <!-- Con la doble llave hacemos referencia a las propiedades de data -->
+        <h3> {{ quote }} </h1>
+        <blockquote> -{{ author }} </blockquote>
+        
+        <!-- vue nos proporciona nuevas propiedades para las etiquetas -->
+        <!-- v-on:click hace referencia al evento click, y se asocia al método changeQuote -->
+        <button v-on:click="changeQuote">
+            Change quote
+        </button>
+    </div>
+
+
+    <script src="./app.js"></script>
+</body>
+</html>

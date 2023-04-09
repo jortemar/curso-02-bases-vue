@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue.js Intro</title>
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <!-- Control absoluto de este DIV -->
+    <div id="myApp">
+        <h1> Batman quotes <small>{{ newQuote }}</small></h1>  
+        <!-- modular atributos ctrl + shitft + alt + a -->
+        <!-- podemos utilizar modificadores de evento, que se utilizan como si fueran métodos del mismo (keypress.enter)-->
+        <input
+          type="text"
+          v-model="newQuote"
+          v-on:keypress.enter="addQuote">
+        <!-- el v-model nos permite comunicar la vista con la lógica. Se le asigna una variable que
+            almacena el valor del input. Su nombre debe coincidir con alguna de las propiedades del objeto data -->
+        <!-- v-on nos sirve para llamar a eventos -->
+        <hr>
+
+        <ul>
+            <!-- estamos recorriendo el objeto quote, solo que lo hemos desectructurizado -->
+            <!-- No estoy seguro de cómo se hace lo del índice. index no es una palabra
+            reservada ni tampoco una propiedad del objeto. De hecho podemos cambiar su 
+            nombre y todo seguiría funcionando igual. Supongo que el v-for acepta el índice como
+            segundo parámetro opcional. Como el primer parámetro es el objeto, el segundo tiene 
+            que ser el índice, y le asignamos el nombre que queramos -->
+            <li v-for="({ quote, author }, index) in quotes"> 
+                <span>{{ index + 1 }} - {{ quote }}</span>
+                <!-- si author no es nulo, se muestra el blockquote -->
+                <!-- <blockquote v-if="author">-{{ author }}</blockquote> -->
+                <blockquote v-show="author">-{{ author }}</blockquote>
+                <!-- el v-if es vago. Si la condición no se cumple ni siquiera genera el nodo -->
+                <!-- el v-show siempre crea el nodo. En caso de no darse la condición simplemente no se mostrará -->
+
+            </li>
+             
+            
+        </ul>
+
+    </div>
+
+
+    <script src="./app.js"></script>
+</body>
+</html>
